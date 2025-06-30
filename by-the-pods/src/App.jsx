@@ -6,10 +6,10 @@ import Header from './components/Header'
 
 function App() {
 
-  return (
-    <p>
+  return ( 
+      <Header>
       Open Space for files and things to  throw in 
-    </p>
+      </Header>
   )
 }
 
