@@ -4,21 +4,26 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './components/Header'
 import { data } from 'react-router-dom'
+import Footer from './components/Footer'
 
 const App = () => {
 React.useEffect(() => {
   fetch ("https://podcast-api.netlify.app")
   .then((response)=>response.json())
   .then((data) => console.log(data));
-}, [])
+}, []);
 
 return (
   <div>
     <Header />
-  </div>
-)
+    <main>
 
-} 
+    </main>
+    <Footer />
+  </div>
+);
+
+};
 
 
 
