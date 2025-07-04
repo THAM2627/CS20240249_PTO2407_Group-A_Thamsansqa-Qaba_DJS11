@@ -5,6 +5,9 @@ export default function About() {
         <div>
             <h1>About</h1>
             <h2>BY THE PODS</h2>
+            <p>
+                
+            </p>
         </div>
     );
 }

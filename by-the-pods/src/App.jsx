@@ -20,7 +20,7 @@ return (
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
         <Route path="/favourites" element={<h1>Favourites</h1>} />
-        <Route path="About.jsx" element={<h1>About</h1>} />
+        <Route path="/About.jsx" element={<h1>About</h1>} />
       </Routes>
     </main>
     <Footer/>
