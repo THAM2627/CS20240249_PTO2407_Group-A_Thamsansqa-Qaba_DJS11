@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import About from './components/About'
 
 const App = () => {
 React.useEffect(() => {
@@ -19,9 +20,10 @@ return (
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
         <Route path="/favourites" element={<h1>Favourites</h1>} />
-        <Route path="/contact" element={<h1>Contact</h1>} />
+        <Route path="About.jsx" element={<h1>About</h1>} />
       </Routes>
     </main>
+    <Footer/>
   </div>
   </BrowserRouter>
 

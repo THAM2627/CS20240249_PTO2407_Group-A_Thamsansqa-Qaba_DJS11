@@ -9,7 +9,7 @@ const Footer = () => {
             Hello Some text from the footer to check the components.
         </p>
         
-            <Link to = "about">About</Link>
+            <Link to = "About.jsx">About</Link>
         </footer>
     )
 }
