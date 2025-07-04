@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -11,13 +12,19 @@ React.useEffect(() => {
 }, []);
 
 return (
+  <BrowserRouter>
   <div>
-    <Header />
+    <Header/>
     <main>
-
+      <Routes>
+        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/favourites" element={<h1>Favourites</h1>} />
+        <Route path="/contact" element={<h1>Contact</h1>} />
+      </Routes>
     </main>
-    <Footer />
   </div>
+  </BrowserRouter>
+
 );
 
 };
