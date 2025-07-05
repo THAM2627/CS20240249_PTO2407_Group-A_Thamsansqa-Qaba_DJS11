@@ -20,9 +20,9 @@ return (
     <main>
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
-        <Route path="/favourites" element={<h1>Favourites</h1>} />
+        <Route path="/Favourites" element={<h1>Favourites</h1>} />
         <Route path="/About" element={<h1><About/></h1>} />
-        <Route path="/shows" element = {<h1><ShowList/></h1>} />
+        <Route path="/Shows" element = {<h1><ShowList/></h1>} />
       </Routes>
     </main>
     <Footer/>
