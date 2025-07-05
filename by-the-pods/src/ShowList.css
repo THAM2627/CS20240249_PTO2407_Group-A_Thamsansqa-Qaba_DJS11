@@ -12,3 +12,10 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
+
+.show-card {
+    background-color: cyan;
+    padding: 20px;
+    border: 1px solid lightgrey;
+    box-shadow: 0 0 10px lightgoldenrodyellow;
+}
