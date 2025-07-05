@@ -1,0 +1,14 @@
+.show-list{
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: aqua;
+    border: 1px solid grey;
+    box-shadow: 0 0 10px lightgray;
+}
+
+.show-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
