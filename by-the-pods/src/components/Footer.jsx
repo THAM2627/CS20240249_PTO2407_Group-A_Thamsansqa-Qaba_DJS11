@@ -6,8 +6,15 @@ const Footer = () => {
 
         <footer>
              <p>
-            Hello Some text from the footer to check the components.
+            By The Pods © 2025
         </p>
+        <p2>
+            All rights reserved
+        </p2>
+
+        <p3>
+            Designed by: Thamsanqa "THAM!" Qaba
+        </p3>
         
             <Link to = "About.jsx">About</Link>
         </footer>
