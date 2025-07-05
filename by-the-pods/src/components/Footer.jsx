@@ -5,16 +5,18 @@ const Footer = () => {
     return (
 
         <footer>
-             <p>
-            By The Pods © 2025
-        </p>
-        <p2>
-            All rights reserved
-        </p2>
 
-        <p3>
+        <p>
+            By The Pods © 2025
+        </h1>
+        
+        <p>
+            All rights reserved
+        </p>
+
+        <p>
             Designed by: Thamsanqa "THAM!" Qaba
-        </p3>
+        </p>
         
             <Link to = "About.jsx">About</Link>
         </footer>
