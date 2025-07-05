@@ -18,7 +18,6 @@ const Footer = () => {
             Designed by: Thamsanqa "THAM!" Qaba
         </p>
         
-            <Link to = "About.jsx">About</Link>
         </footer>
     )
 }
