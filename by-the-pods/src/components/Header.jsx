@@ -9,7 +9,7 @@ const Header = () => {
                     Hello Some text from the header to check the components.
                 </p>
                 <Link to="/">Home</Link>
-                <Link to="About.jsx">About</Link>
+                <Link to="/About">About</Link>
             </nav>
         </header>
     )
