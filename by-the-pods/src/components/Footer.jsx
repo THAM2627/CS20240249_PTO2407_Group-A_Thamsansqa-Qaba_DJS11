@@ -8,7 +8,7 @@ const Footer = () => {
 
         <p>
             By The Pods © 2025
-        </h1>
+        </p>
         
         <p>
             All rights reserved
