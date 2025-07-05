@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./ShowList.css";
 
 const ShowList = () => {
     const[ shows, setShows ] = useState([]);
