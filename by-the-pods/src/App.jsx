@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import About from './components/About'
 import ShowList from './components/ShowList';
+import Favourites from './components/Favourites';
 
 const App = () => {
 React.useEffect(() => {
