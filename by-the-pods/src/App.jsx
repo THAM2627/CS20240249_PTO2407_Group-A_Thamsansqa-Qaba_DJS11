@@ -15,7 +15,7 @@ React.useEffect(() => {
 
 return (
   <BrowserRouter>
-  <div>
+  <div className='App'>
     <Header/>
     <main>
       <Routes>
