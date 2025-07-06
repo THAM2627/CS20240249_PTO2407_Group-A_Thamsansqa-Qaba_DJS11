@@ -3,16 +3,15 @@ import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
+        <div className="header">
         <header>
             <nav>
-                <p>
-                    Hello Some text from the header to check the components.
-                </p>
                 <Link to="/">Home</Link>
                 <Link to="/About">About</Link>
                 <Link to="/Shows">Shows</Link>
             </nav>
         </header>
+        </div>
     )
 }
 
