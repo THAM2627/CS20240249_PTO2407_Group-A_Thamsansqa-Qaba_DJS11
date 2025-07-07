@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import About from './components/About'
 import ShowList from './components/ShowList';
 import Favourites from './components/Favourites';
+import { FavouritesProvider } from './components/FavouritesFunction';
 
 const App = () => {
 React.useEffect(() => {
@@ -16,6 +17,7 @@ React.useEffect(() => {
 
 return (
   <BrowserRouter>
+  <FavouritesProvider>
   <div className='App'>
     <Header/>
     <main>
@@ -28,6 +30,7 @@ return (
     </main>
     <Footer/>
   </div>
+  </FavouritesProvider>
   </BrowserRouter>
 
 );
