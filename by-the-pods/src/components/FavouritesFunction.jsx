@@ -10,3 +10,12 @@ const FavouritesProvider = ({ children }) => {
         </FavouritesContext.Provider>
     );
 };
+
+const addFavourite = (podcast) => {
+    setFavourites([...favourites, podcast]);
+};
+
+const removeFavourite = (podcast) => {
+    setFavourites(favourites.filter((f) => f.id !== podcast.id));
+};
+
