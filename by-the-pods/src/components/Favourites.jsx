@@ -1,7 +1,7 @@
 import React from "react";
 import { Favourites } from "./FavouritesFunction";
 
-const Favourites = () => {
+const FavouritesList = () => {
     return (
         <div>
             <h1>Favourites</h1>
