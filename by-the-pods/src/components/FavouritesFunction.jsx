@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Favourites 
+
 
 const FavouritesContext = React.createContext();
 
