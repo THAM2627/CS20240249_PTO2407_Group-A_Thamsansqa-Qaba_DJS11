@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Favourites 
 
 const FavouritesContext = React.createContext();
 
@@ -9,7 +10,7 @@ const FavouritesProvider = ({ children }) => {
             {children}
         </FavouritesContext.Provider>
     );
-};
+
 
 const addFavourite = (podcast) => {
     setFavourites([...favourites, podcast]);
@@ -24,5 +25,7 @@ return (
         {children}
     </FavouritesContext.Provider>
 )
+}
+
 
 export { FavouritesContext, FavouritesProvider };
