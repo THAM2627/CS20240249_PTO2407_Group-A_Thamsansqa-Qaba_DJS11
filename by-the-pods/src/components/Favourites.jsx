@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Favourites } from "./FavouritesFunction";
+import FavouritesContext from "./FavouritesFunction";
 
 const FavouritesList = () => {
     const {favourites } = useContext(FavouritesContext);
