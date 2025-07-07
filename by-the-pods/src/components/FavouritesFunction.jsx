@@ -19,3 +19,10 @@ const removeFavourite = (podcast) => {
     setFavourites(favourites.filter((f) => f.id !== podcast.id));
 };
 
+return (
+    <FavouritesContext.Provider value={{ favourites, addFavourite, removeFavourite }}>
+        {children}
+    </FavouritesContext.Provider>
+)
+
+export { FavouritesContext, FavouritesProvider };
