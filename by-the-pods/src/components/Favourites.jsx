@@ -3,6 +3,7 @@ import { Favourites } from "./FavouritesFunction";
 
 const FavouritesList = () => {
     const {favourites } = useContext(FavouritesContext);
+
     return (
         <div>
             <h1>Favourites</h1>
@@ -14,4 +15,4 @@ const FavouritesList = () => {
     );
 };
 
-export default Favourites;
+export default FavouritesList;
