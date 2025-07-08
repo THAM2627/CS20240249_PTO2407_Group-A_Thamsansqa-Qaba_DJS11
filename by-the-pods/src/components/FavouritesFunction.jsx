@@ -7,18 +7,18 @@ const FavouritesProvider = ({ children }) => {
     const [favourites, setFavourites] = useState([]);
 
 const addFavourite = (podcast) => {
-    setFavourites([...favourites, podcast]);
+    setFavourites((prev) => [...prev, podcast]);
 };
 
 const removeFavourite = (podcast) => {
-    setFavourites(favourites.filter((f) => f.id !== podcast.id));
+    setFavourites((prev) => prev.filter((f) => f.id !== podcast.id));
 };
 
 return (
     <FavouritesContext.Provider value={{ favourites, addFavourite, removeFavourite }}>
         {children}
     </FavouritesContext.Provider>
-)
+);
 };
 
 
