@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const genreMap = {
     1: "Personal Growth",
-    2: "Investgative Journalism",
+    2: "Investigative Journalism",
     3: "History",
     4: "Comedy",
     5: "Entertainment",
@@ -56,7 +56,7 @@ return (
                 <p className ="text-xs text-white">Seasons: {show.seasons}</p>
                 <p className = "text-xs text-gray-400"> 
                 Genres:{" "}
-                {show.genreIds.map((id)=> genreMap[id]).join(", ")}
+                {Array.isArray(show.genreIds) ? show.genreIds.map((id)=> genreMap[id]).join(", "): " "}
                 </p>
                 <p className="text-[10px] text-gray-200 mt-auto">
                 Updated: {" "}
