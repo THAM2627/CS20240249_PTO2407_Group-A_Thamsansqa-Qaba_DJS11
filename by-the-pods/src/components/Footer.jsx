@@ -3,8 +3,7 @@ import React from "react";
 
 const Footer = () => {
     return (
-        <div className="footer">
-        <footer>
+        <footer className="bg-gray-200 text-gray-600">
 
         <p>
             By The Pods © 2025
@@ -19,7 +18,6 @@ const Footer = () => {
         </p>
         
         </footer>
-        </div>
     )
 }
 
