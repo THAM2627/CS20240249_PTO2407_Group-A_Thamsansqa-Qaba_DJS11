@@ -3,8 +3,8 @@ import { useNowPlaying } from "./NowPlayingGlobal";
 
 
 const Footer = () => {
-    const [isPlaying, setIsPlaying] = useNowPlaying();
-    const audioRef = useState(false);
+    const {episode, isPlaying, setIsPlaying} = useNowPlaying();
+    const audioRef = useRef(null);
 
     const togglePlay = () => {
         const audio = audioRef.current;
@@ -28,12 +28,22 @@ const Footer = () => {
         <img 
         src = {episode.image}
         alt = "cover"
-        classname = "w-10 h-10 rounded-lg"/>
+        className = "w-10 h-10 rounded-lg"/>
 
         <div> 
         <p className="text-sm font-semibold truncate max-w-[150px]">{episode.title}</p>
         <p className="text-xs text-gray-400 truncate max-w-[150px]">{episode.show || "Unknown Show"}</p> 
         </div>
+        <div className="flex items-center gap-4">
+            <button
+            onClick={togglePlay}
+            className="bg-white text-black px-3 py-1 rounded hover:bg-gray-300 transition">
+            {isPlaying ? "Pause" : "Play"}
+            </button>
+        </div>
+        <audio ref ={audioRef}
+        src={episode.audioUrl}/>
+
         </div>
             </div>
         
