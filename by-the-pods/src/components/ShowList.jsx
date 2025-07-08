@@ -23,7 +23,7 @@ useEffect(() => {
         const response = await fetch("https://podcast-api.netlify.app");
         const data = await response.json();
         const sorted = data.sort((a, b) => a.title.localeCompare(b.title));
-        setShows(data);
+        setShows(sorted);
         setLoading(false);
     } catch (error) {
         console.error("Failed to fetch shows:", error);
@@ -45,15 +45,24 @@ return (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                 {shows.map((show) => (
                     <div 
-                    key={show.id} className="bg-gray-800 hover:bg-zinc-400 rounded-xl shadow-lg overflow-hidden transition duration-300 transform hover:scale-105
+                    key={show.id} className="bg-gray-800 hover:bg-zinc-700 rounded-xl shadow-lg overflow-hidden transition duration-300 transform hover:scale-105
                     cursor-pointer flex flex-col">
                 <img 
                 src={show.image} 
                 alt={show.title} 
-                className="w-full h-32 sm:h-32 md:h-38 lg:h-40 object-cover"/>
+                className="w-full h-32 sm:h-36 md:h-40 lg:h-44 object-cover"/>
                 <div className="p-4 flex flex-col gap-2 flex-grow">
                 <h4 className="text-sm md:text-base font-semibold truncate">{show.title}</h4>
-                
+                <p className ="text-xs text-white">Seasons: {show.seasons}</p>
+                <p className = "text-xs text-gray-400"> 
+                Genres:{" "}
+                {show.genreIds.map((id)=> genreMap[id]).join(", ")}
+                </p>
+                <p className="text-[10px] text-gray-200 mt-auto">
+                Updated: {" "}
+                {new Date(show.updated).toLocaleDateString()}
+                </p>                
+                </div>
                 </div>
                 ))}
             </div>
