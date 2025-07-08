@@ -22,22 +22,13 @@ const Footer = () => {
             {/* Audio Player - Now Playing */}
         <div className="flex items-center gap-4 mb-2 sm:mb:0">
         <img 
-        src: {Sho}
+        src = {show.image}
+        alt = {show.title}
+        classname = "w-10 h-10 rounded-lg"/>
+
             </div>
         </div>
         
-
-        <p>
-            By The Pods © 2025
-        </p>
-        
-        <p>
-            All rights reserved
-        </p>
-
-        <p>
-            Designed by: Thamsanqa "THAM!" Qaba
-        </p>
         
         </footer>
     )
