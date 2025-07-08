@@ -26,8 +26,20 @@ const Footer = () => {
         alt = {show.title}
         classname = "w-10 h-10 rounded-lg"/>
 
-            </div>
+        <div className="flex items-center gap-4">
+            <button
+            onClick = {togglePlayback}
+            className="bg-white text-black px-3 py-1 rounded hover:bg-gray-300 transition">
+            {isPlaying ? "Pause" : "Play"}
+            </button>
+        {/* Audio Elements */}
+        <audio
+        ref = {audioRef}
+        src = {episode.audioUrl}/>
+
         </div>
+        </div>
+            </div>
         
         
         </footer>
