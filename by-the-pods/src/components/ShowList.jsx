@@ -21,6 +21,7 @@ useEffect(() => {
     const fetchShows = async () => {
         const response = await fetch("https://podcast-api.netlify.app");
         const data = await response.json();
+        const sorted = data.sort((a, b) => a.title.localeCompare(b.title));
         setShows(data);
         setLoading(false);
     };
