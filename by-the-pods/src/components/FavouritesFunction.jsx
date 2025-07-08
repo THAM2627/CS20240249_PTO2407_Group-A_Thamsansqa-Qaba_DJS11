@@ -1,7 +1,7 @@
 import { useState, createContext, useContext } from "react";
 
 
-const FavouritesContext = React.createContext();
+const FavouritesContext = createContext();
 
 const FavouritesProvider = ({ children }) => {
     const [favourites, setFavourites] = useState([]);
