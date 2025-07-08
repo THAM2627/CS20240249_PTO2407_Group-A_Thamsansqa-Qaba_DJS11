@@ -4,7 +4,10 @@ import { useState, createContext, useContext, useEffect } from "react";
 const FavouritesContext = createContext();
 
 const FavouritesProvider = ({ children }) => {
-    const [favourites, setFavourites] = useState([]);
+    const [favourites, setFavourites] = useState(() => {
+        const stored = localStorage.getItem("favourites");
+        return stored ? JSON.parse(stored) : [];
+    });
 
 const addFavourite = (podcast) => {
     setFavourites((prev) => [...prev, podcast]);
