@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {useFavourites} from "./FavouritesFunction";
 
 const genreMap = {
     1: "Personal Growth",
@@ -15,6 +16,7 @@ const genreMap = {
 const ShowList = () => {
     const[ shows, setShows ] = useState([]);
     const[ loading, setLoading ] = useState(true);
+    const {favourites, addFavourite, removeFavourite} = useFavourites();
 
 
 useEffect(() => {
@@ -32,6 +34,8 @@ useEffect(() => {
     };
     fetchShows();
 }, []);
+
+const isFavourite = (show) => favourites.some((fav) => fav.id === show.id);
 
 return (
     <div className="bg-black text-white min-h-screen px-4 py-8">
@@ -63,9 +67,22 @@ return (
                 {new Date(show.updated).toLocaleDateString()}
                 </p>                
                 </div>
+                {/*Favourite Button */}
+                <button
+                onClick = {() => {
+                    isFavourite(show)? removeFavourite(show.id): addFavourite(show);
+                }
+                className = {`mt-2 text-sm px-2 py-1 rounded-md ${
+                    isFavourite(show) ? "bg-red-600 hover:bg-red-700" : "bg-gray-600 hover:bg-gray-700" 
+                }transition`}>
+                {isFavourite(show) ? "💔Remove Favourite" : "❤️Add Favourite"}
+
+                </button>
+            
                 </div>
                 ))}
             </div>
+            
         )}
     </div>
 );
