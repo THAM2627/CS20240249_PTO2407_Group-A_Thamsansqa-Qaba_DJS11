@@ -15,9 +15,16 @@ const Footer = () => {
         }
         setIsPlaying(!isPlaying);
     };
-    
+
     return (
-        <footer className="bg-gray-200 text-gray-600">
+        <footer className="fixed bottom-0 w-full bg-gray-900 text-white px-4 py-3 shadow-lg z-50">
+        <div  className="flex flex-col sm:flex-row items-center justify-between">
+            {/* Audio Player - Now Playing */}
+        <div className="flex items-center gap-4 mb-2 sm:mb:0">
+        <img 
+        src: {Sho}
+            </div>
+        </div>
         
 
         <p>
