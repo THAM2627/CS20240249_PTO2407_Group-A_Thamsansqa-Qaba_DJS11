@@ -9,8 +9,15 @@ const FavouritesProvider = ({ children }) => {
         return stored ? JSON.parse(stored) : [];
     });
 
+useEffect(() => {
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+}, [favourites]);
+
 const addFavourite = (podcast) => {
-    setFavourites((prev) => [...prev, podcast]);
+    setFavourites((prev) => 
+    { if (prev.find((item) => item.id === podcast.id)) return prev;
+    return [...prev, podcast];
+});
 };
 
 const removeFavourite = (podcast) => {
