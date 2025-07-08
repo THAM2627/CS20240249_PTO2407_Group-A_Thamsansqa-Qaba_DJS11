@@ -31,5 +31,5 @@ return (
 );
 };
 
-
+const useFavourites = () => useContext(FavouritesContext);
 export { FavouritesContext, FavouritesProvider };
