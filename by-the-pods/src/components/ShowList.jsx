@@ -45,7 +45,8 @@ return (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                 {shows.map((show) => (
                     <div 
-                    key={show.id} className="show-card">
+                    key={show.id} className="bg-gray-800 hover:bg-zinc-400 rounded-xl shadow-lg overflow-hidden transition duration-300 transform hover:scale-105
+                    cursor-pointer flex flex-col">
                 <h4>{show.title}</h4>
                 <img src={show.image} alt={show.title} />
                 <p>Genres: {show.genres.join(", ")}</p>
