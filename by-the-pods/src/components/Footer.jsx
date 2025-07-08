@@ -7,7 +7,15 @@ const Footer = () => {
 
     const togglePlay = () => {
         const audio = audioRef.current;
-    }
+        if (!audio) return;
+        if (isPlaying) {
+            audio.pause();
+        } else {
+            audio.play();
+        }
+        setIsPlaying(!isPlaying);
+    };
+    
     return (
         <footer className="bg-gray-200 text-gray-600">
         
