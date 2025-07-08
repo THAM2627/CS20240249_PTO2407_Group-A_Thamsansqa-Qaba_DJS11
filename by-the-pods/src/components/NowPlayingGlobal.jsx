@@ -32,7 +32,7 @@ const play = () => {
 };
 
 return (
-    <NowPlayingContext.Provider value={{ episode, playEpisode, pause, play, audioRef }}>
+    <NowPlayingContext.Provider value={{ episode, playEpisode, pause, play, audioRef, isPlaying, setIsPlaying }}>
         {children}
     </NowPlayingContext.Provider>
 );
