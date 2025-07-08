@@ -15,5 +15,23 @@ const playEpisode = (episodeData) => {
     },100);
 };
 
-const 
-}
+const pause = () => {
+    if (audioRef.current) {
+        audioRef.current.pause();
+    }
+};
+
+const play = () => {
+    if (audioRef.current) {
+        audioRef.current.play();
+    }
+};
+
+return (
+    <NowPlayingContext.Provider value={{ episode, playEpisode, pause, play, audioRef }}>
+        {children}
+    </NowPlayingContext.Provider>
+);
+};
+
+export const useNowPlaying = () => useContext(NowPlayingContext);
