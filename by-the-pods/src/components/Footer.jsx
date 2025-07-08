@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 
 const Footer = () => {
+    const [isPlaying, setIsPlaying] = useState(false);
+    const audioRef = useRef(null);
+
+    const togglePlay = () => {
+        const audio = audioRef.current;
+    }
     return (
         <footer className="bg-gray-200 text-gray-600">
         
