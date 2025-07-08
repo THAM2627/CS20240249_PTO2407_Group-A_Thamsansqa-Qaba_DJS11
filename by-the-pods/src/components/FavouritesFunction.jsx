@@ -20,8 +20,8 @@ const addFavourite = (podcast) => {
 });
 };
 
-const removeFavourite = (podcast) => {
-    setFavourites((prev) => prev.filter((f) => f.id !== podcast.id));
+const removeFavourite = (id) => {
+    setFavourites((prev) => prev.filter((f) => f.id !== id));
 };
 
 return (
