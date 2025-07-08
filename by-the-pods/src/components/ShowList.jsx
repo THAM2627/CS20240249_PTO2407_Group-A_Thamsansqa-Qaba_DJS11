@@ -47,9 +47,13 @@ return (
                     <div 
                     key={show.id} className="bg-gray-800 hover:bg-zinc-400 rounded-xl shadow-lg overflow-hidden transition duration-300 transform hover:scale-105
                     cursor-pointer flex flex-col">
-                <h4>{show.title}</h4>
-                <img src={show.image} alt={show.title} />
-                <p>Genres: {show.genres.join(", ")}</p>
+                <img 
+                src={show.image} 
+                alt={show.title} 
+                className="w-full h-32 sm:h-32 md:h-38 lg:h-40 object-cover"/>
+                <div className="p-4 flex flex-col gap-2 flex-grow">
+                <h4 className="text-sm md:text-base font-semibold truncate">{show.title}</h4>
+                
                 </div>
                 ))}
             </div>
