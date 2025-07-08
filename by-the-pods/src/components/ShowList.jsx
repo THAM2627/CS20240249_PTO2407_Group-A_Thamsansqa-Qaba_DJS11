@@ -36,9 +36,11 @@ useEffect(() => {
 return (
     <div className="bg-black text-white min-h-screen px-4 py-8">
     <h1 className="text-3xl font-bold mb-6 text-center">🎧All Shows🎧</h1>
-    
+
         {loading ? (
-            <p>Loading...</p>
+            <div className="flex justify-center items-center h-screen">
+            <p className="text-lg animate-bounce">Loading...</p>
+            </div>
         ):(
             <div className="show-grid">
                 {shows.map((show) => (
