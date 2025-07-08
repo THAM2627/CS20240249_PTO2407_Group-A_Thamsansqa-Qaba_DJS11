@@ -32,4 +32,4 @@ return (
 };
 
 const useFavourites = () => useContext(FavouritesContext);
-export { FavouritesContext, FavouritesProvider };
+export { FavouritesContext, FavouritesProvider, useFavourites };
