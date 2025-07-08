@@ -25,7 +25,7 @@ return (
                 {shows.map((show) => (
                     <div key={show.id} className="show-card">
                 <h4>{show.title}</h4>
-                <img src="show.image" alt={show.title} />
+                <img src={show.image} alt={show.title} />
                 <p>Genres: {show.genres.join(", ")}</p>
                 </div>
                 ))}
