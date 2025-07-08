@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import FavouritesContext from "./FavouritesFunction";
+import {FavouritesContext} from "./FavouritesFunction";
 
 const FavouritesList = () => {
     const {favourites } = useContext(FavouritesContext);
@@ -8,7 +8,7 @@ const FavouritesList = () => {
         <div>
             <h1>Favourites</h1>
             <ul>
-            {Favourites.map((podcast) => ( <li key={podcast.id}>{podcast.title}</li> 
+            {favourites.map((podcast) => ( <li key={podcast.id}>{podcast.title}</li> 
             ))}
             </ul>
         </div>
