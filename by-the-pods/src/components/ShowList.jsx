@@ -27,13 +27,16 @@ useEffect(() => {
         setLoading(false);
     } catch (error) {
         console.error("Failed to fetch shows:", error);
+    }
     
     };
     fetchShows();
 }, []);
 
 return (
-    <div className="show-list">
+    <div className="bg-black text-white min-h-screen px-4 py-8">
+    <h1 className="text-3xl font-bold mb-6 text-center">🎧All Shows🎧</h1>
+    
         {loading ? (
             <p>Loading...</p>
         ):(
