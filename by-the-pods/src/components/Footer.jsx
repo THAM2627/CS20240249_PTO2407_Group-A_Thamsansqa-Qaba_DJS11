@@ -3,17 +3,16 @@ import { useNowPlaying } from "./NowPlayingGlobal";
 
 
 const Footer = () => {
-    const {episode, isPlaying, setIsPlaying} = useNowPlaying();
-    const audioRef = useRef(null);
+    const {episode, isPlaying, setIsPlaying, audioRef, play, pause} = useNowPlaying();
 
     const togglePlay = () => {
         const audio = audioRef.current;
-        if (!audio) return;
+        if (!audioRef.current) return;
 
         if (isPlaying) {
-            audio.pause();
+            pause();
         } else {
-            audio.play();
+            play();
         }
         setIsPlaying(!isPlaying);
     };
