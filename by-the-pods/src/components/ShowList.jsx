@@ -69,12 +69,13 @@ return (
                 </div>
                 {/*Favourite Button */}
                 <button
-                onClick = {() => {
-                    isFavourite(show)? removeFavourite(show.id): addFavourite(show);
+                onClick = {() => 
+                    isFavourite(show)? removeFavourite(show.id): addFavourite(show)
                 }
                 className = {`mt-2 text-sm px-2 py-1 rounded-md ${
                     isFavourite(show) ? "bg-red-600 hover:bg-red-700" : "bg-gray-600 hover:bg-gray-700" 
                 }transition`}>
+
                 {isFavourite(show) ? "💔Remove Favourite" : "❤️Add Favourite"}
 
                 </button>
@@ -82,10 +83,10 @@ return (
                 </div>
                 ))}
             </div>
-            
         )}
+
     </div>
-);
-};
+)
+}
 
 export default ShowList
