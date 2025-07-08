@@ -19,11 +19,15 @@ const ShowList = () => {
 
 useEffect(() => {
     const fetchShows = async () => {
+        try {
         const response = await fetch("https://podcast-api.netlify.app");
         const data = await response.json();
         const sorted = data.sort((a, b) => a.title.localeCompare(b.title));
         setShows(data);
         setLoading(false);
+    } catch (error) {
+        console.error("Failed to fetch shows:", error);
+    
     };
     fetchShows();
 }, []);
