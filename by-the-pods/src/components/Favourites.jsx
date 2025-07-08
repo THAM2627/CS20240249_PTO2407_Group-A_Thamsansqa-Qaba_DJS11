@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import {FavouritesContext} from "./FavouritesFunction";
+import React from "react";
+import {useFavourites} from "./FavouritesFunction";
 
 const FavouritesList = () => {
-    const {favourites } = useContext(FavouritesContext);
+    const {favourites, removeFavourite} = useFavourites();
 
     return (
         <div className="bg-black text-white min-h-screen px-4 py-8">
