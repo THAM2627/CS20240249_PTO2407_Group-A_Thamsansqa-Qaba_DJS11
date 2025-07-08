@@ -18,7 +18,7 @@ React.useEffect(() => {
 return (
   <BrowserRouter>
   <FavouritesProvider>
-  <div className='App'>
+  <div className='max-w-screen-md mx-auto p-4 md:p-6 lg:p-8'>
     <Header/>
     <main>
       <Routes>
