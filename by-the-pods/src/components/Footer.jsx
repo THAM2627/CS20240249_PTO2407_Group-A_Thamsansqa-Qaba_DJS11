@@ -4,6 +4,7 @@ import React from "react";
 const Footer = () => {
     return (
         <footer className="bg-gray-200 text-gray-600">
+        
 
         <p>
             By The Pods © 2025

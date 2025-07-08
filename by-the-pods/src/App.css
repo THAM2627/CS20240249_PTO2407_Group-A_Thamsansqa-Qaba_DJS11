@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 .App{
   margin: 0;
   display: flex;
