@@ -20,9 +20,9 @@ return (
   <BrowserRouter>
   <NowPlayingProvider>
   <FavouritesProvider>
-  <div className='max-w-screen-md mx-auto p-4 md:p-6 lg:p-8'>
+  <div className='min-h-screen flex flex-col bg-black text-white font-sans'>
     <Header/>
-    <main>
+    <main className='flex-grow px-4 sm:px-6 lg:px-8 py-6'>
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
         <Route path="/Favourites" element={<Favourites/>} />
