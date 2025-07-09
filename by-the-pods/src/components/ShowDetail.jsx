@@ -7,19 +7,24 @@ const ShowDetail = () => {
     const { playEpisode } = useNowPlaying();
     const [ show, setShow ] = useState(null);
     const [selectedSeason, setSelectedSeason ] = useState(null);
-}
+
 
 useEffect(() => {
+    ( async () => {
     try {
-        ( async () => {
             const response = await fetch(`https://podcast-api.netlify.app/${id}`);
             const data = await response.json();
             setShow(data);
             setSelectedSeason(data.seasons[0]);
-        })();
+        } catch (error) {
+        console.error("Error fetching show:", error);
+        };
+    })();
     }, [id]);
 
-    if(!show) return <p>Loading show...</p>;
+        
+        
+        if(!show) return <p>Loading show...</p>;
 
     return (
         <div>
@@ -36,4 +41,20 @@ useEffect(() => {
             </button>
         ))}
         </div>
-    
+    <ul>
+        {selectedSeason?.episodes.map((episode) => (
+        <li key={episode.id}>
+            {episode.title}
+            <button onClick={() => playEpisode ({
+            title: episode.title,
+            image: episode.image,
+            audioUrl: episode.file,
+            showTitle: show.title,})}>
+            Play
+            </button>
+            </li>
+        ))}
+    </ul>
+        </div>
+    );
+            };
