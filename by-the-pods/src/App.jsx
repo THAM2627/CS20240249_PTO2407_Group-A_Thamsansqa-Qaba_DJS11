@@ -8,7 +8,7 @@ import ShowList from './components/ShowList';
 import Favourites from './components/Favourites';
 import { FavouritesProvider } from './components/FavouritesFunction';
 import { NowPlayingProvider } from './components/NowPlayingGlobal';
-
+import Homepage from './components/Homepage';
 
 const App = () => {
 React.useEffect(() => {
@@ -25,7 +25,7 @@ return (
     <Header/>
     <main className='flex-grow px-4 sm:px-6 lg:px-8 py-6'>
       <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/" element={<Homepage/>} />
         <Route path="/Favourites" element={<Favourites/>} />
         <Route path="/About" element={<About/>} />
         <Route path="/Shows" element = {<ShowList/>} />
