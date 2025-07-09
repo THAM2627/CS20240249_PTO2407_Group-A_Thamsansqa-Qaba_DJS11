@@ -3,11 +3,14 @@ import React from "react";
 
 const About = () => {
     return (
-        <div>
-            <h1>About US</h1>
-            <h2>BY THE PODS</h2>
-            <p>
-            Welcome to By The Pods. We are a podcast app that allows you to listen to your favorite podcasts. Our app is designed to be easy to use, easy on the eyes, and easy on the ears. 
+        <div className="bg-black text-white min-h-screen px-6 py-12 max-w-4xl mx-auto">
+            <h1 className="text-3xl font-bold mb-4 border-b pb-2 border-gray-700">
+            About US</h1>
+            
+            <h2 className="text-2xl font-semibold mb-2 text-blue-400">🎙️BY THE PODS</h2>
+            <p className="text-gray-300 mb-8 leading-relaxed">
+            Welcome to <span className="font-semibold mb-2 text-blue-400">By The Pods</span> We are a podcast app that allows you to listen to your favorite podcasts.
+            Content is king, distraction are gone. Whether you're into deep conversations, comedy, news, insightful stories, mysetries or anything else in between, we have got you covered.
             </p>
 
             <h1>OUR MISSION</h1>
