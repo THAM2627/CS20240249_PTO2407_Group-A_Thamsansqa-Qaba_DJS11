@@ -12,7 +12,7 @@ const ShowDetail = () => {
 useEffect(() => {
     ( async () => {
     try {
-            const response = await fetch(`https://podcast-api.netlify.app/${id}`);
+            const response = await fetch(`https://podcast-api.netlify.app/id/${id}`);
             const data = await response.json();
             setShow(data);
             setSelectedSeason(data.seasons[0]);
@@ -48,8 +48,8 @@ useEffect(() => {
             <button onClick={() => playEpisode ({
             title: episode.title,
             image: episode.image,
-            audioUrl: episode.file,
-            showTitle: show.title,})}>
+            audioUrl: episode.audio,
+            show: show.title,})}>
             Play
             </button>
             </li>
