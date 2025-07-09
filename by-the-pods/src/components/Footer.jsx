@@ -57,8 +57,13 @@ const Footer = () => {
             {isPlaying ? "Pause" : "Play"}
             </button>
         </div>
-        <audio ref ={audioRef}
-        src={episode.audioUrl}/>
+        <audio 
+        ref ={audioRef}
+        src={episode.audioUrl}
+        onTimeUpdate={handleTimeUpdate}
+        onLoadedMetadata={handleLoadedMetadata}
+        className="hidden"
+        controls/>
 
         </div>
             </div>
