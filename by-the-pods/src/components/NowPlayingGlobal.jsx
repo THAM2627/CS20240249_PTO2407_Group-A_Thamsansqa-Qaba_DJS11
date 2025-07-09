@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useRef } from "react";
+import React, { createContext, useState, useContext, useRef, useEffect } from "react";
 
 const NowPlayingContext = createContext();
 
