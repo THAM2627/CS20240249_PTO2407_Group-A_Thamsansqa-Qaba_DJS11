@@ -6,9 +6,11 @@ import Footer from './components/Footer'
 import About from './components/About'
 import ShowList from './components/ShowList';
 import Favourites from './components/Favourites';
+import Homepage from './components/Homepage';
+import ShowDetail from './components/ShowDetail';
 import { FavouritesProvider } from './components/FavouritesFunction';
 import { NowPlayingProvider } from './components/NowPlayingGlobal';
-import Homepage from './components/Homepage';
+
 
 const App = () => {
 React.useEffect(() => {
@@ -29,6 +31,7 @@ return (
         <Route path="/Favourites" element={<Favourites/>} />
         <Route path="/About" element={<About/>} />
         <Route path="/Shows" element = {<ShowList/>} />
+        <Route path="/Shows/:id" element={<ShowDetail/>} />
       </Routes>
     </main>
     <Footer/>
