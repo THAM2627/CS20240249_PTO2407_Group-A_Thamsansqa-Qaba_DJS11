@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {useFavourites} from "./FavouritesFunction";
+import { Link } from "react-router-dom";
 
 const genreMap = {
     1: "Personal Growth",
@@ -47,10 +48,12 @@ return (
             </div>
         ):(
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
                 {shows.map((show) => (
                     <div 
                     key={show.id} className="bg-gray-800 hover:bg-zinc-700 rounded-xl shadow-lg overflow-hidden transition duration-300 transform hover:scale-105
                     cursor-pointer flex flex-col">
+            <Link to={`/show/${show.id}`}>
                 <img 
                 src={show.image} 
                 alt={show.title} 
@@ -65,8 +68,13 @@ return (
                 <p className="text-[10px] text-gray-200 mt-auto">
                 Updated: {" "}
                 {new Date(show.updated).toLocaleDateString()}
-                </p>                
+                </p>              
                 </div>
+                </Link>
+                
+              
+            
+
                 {/*Favourite Button */}
                 <button
                 onClick = {() => 
