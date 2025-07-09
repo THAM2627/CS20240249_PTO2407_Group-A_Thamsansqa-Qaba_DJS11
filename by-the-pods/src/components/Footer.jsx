@@ -8,7 +8,7 @@ const Footer = () => {
     if (!episode) return null;
 
     const togglePlay = () => {
-        const audio = audioRef.current;
+        
         if (!audioRef.current) return;
 
         if (isPlaying) {
