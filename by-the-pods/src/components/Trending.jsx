@@ -49,7 +49,7 @@ return (
             <div className="p-4">
             <p className="text-sm md:text-base font-bold truncate">{podcast.title}</p>
             <p className="text-xs text-white">
-                {genreMap[podcast.genreIds[0]]||"Podcast"}
+                {genreMap[podcast.genreIds?.[0]]||"Podcast"}
                 </p>
                 </div>
             </Link>
