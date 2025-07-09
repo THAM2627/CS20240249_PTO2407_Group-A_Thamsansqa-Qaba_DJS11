@@ -9,6 +9,7 @@ import Favourites from './components/Favourites';
 import { FavouritesProvider } from './components/FavouritesFunction';
 import { NowPlayingProvider } from './components/NowPlayingGlobal';
 
+
 const App = () => {
 React.useEffect(() => {
   fetch ("https://podcast-api.netlify.app")
