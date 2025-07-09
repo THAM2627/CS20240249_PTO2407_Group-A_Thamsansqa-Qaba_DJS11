@@ -9,3 +9,18 @@ const ShowDetail = () => {
     const [selectedSeason, setSelectedSeason ] = useState(null);
 }
 
+useEffect(() => {
+    try {
+        ( async () => {
+            const response = await fetch(`https://podcast-api.netlify.app/${id}`);
+            const data = await response.json();
+            setShow(data);
+            setSelectedSeason(data.seasons[0]);
+        })();
+    }, [id]);
+
+    if(!show) return <p>Loading show...</p>;
+
+    return (
+        
+    )
