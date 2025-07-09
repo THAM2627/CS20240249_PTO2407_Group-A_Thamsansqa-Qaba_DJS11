@@ -30,5 +30,8 @@ const Homepage = () => {
             Favourites
         </Link>
         </div>
-    )
-}
+        </div>
+    );
+};
+
+export default Homepage
