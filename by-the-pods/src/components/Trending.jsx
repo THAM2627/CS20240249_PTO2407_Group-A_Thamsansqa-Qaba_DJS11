@@ -11,4 +11,19 @@ const genreMap = {
     7:"Fiction", 
     8:"News", 
     9:"Kids and Family"
+};
+
+const Trending = () => {
+    const [trending, setTrending] = useState([]);
 }
+
+useEffect(() => {
+    (async () => {
+        const resp = await fetch ("https://podcast-api.netlify.app");
+        const data = await resp.json();
+        const sorted = data.sort((a,b) => new Date(b.updated) - new Date(a.updated))
+        .slice(0,5);
+        setTrending(sorted);
+    })();
+}, []);
+
