@@ -24,7 +24,7 @@ useEffect(() => {
 
         
         
-        if(!show) return <p>Loading show...</p>;
+    if(!show) return <p>Loading show...</p>;
 
     return (
         <div>
@@ -58,3 +58,5 @@ useEffect(() => {
         </div>
     );
             };
+
+export default ShowDetail
