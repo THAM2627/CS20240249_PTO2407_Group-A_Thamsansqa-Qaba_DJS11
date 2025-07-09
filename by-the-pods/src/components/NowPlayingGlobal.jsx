@@ -14,8 +14,12 @@ const playEpisode = (episodeData) => {
     setIsPlaying(true);
     setTimeout(() => {
         if (audioRef.current) {
-            audioRef.current.play();
+            const savedTime = localStorage.getItem(`episode-${episodeData.id}`);
+            setCurrentTime(savedTime ? parseFloat(savedTime) : 0);
+        } else {
+            setCurrentTime(0);
         }
+        audioRef.current.play();
     },100);
 };
 
@@ -32,6 +36,12 @@ const play = () => {
     }
     setIsPlaying(true);
 };
+
+useEffect(() => {
+    if (episode) {
+        localStorage.setItem(`episode-${episode.id}`, currentTime);
+    }
+}, [episode, currentTime]);
 
 return (
     <NowPlayingContext.Provider value={{ episode, playEpisode, pause, play, audioRef, isPlaying, setIsPlaying, currentTime, setCurrentTime, duration, setDuration  }}>
