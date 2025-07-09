@@ -26,7 +26,9 @@ const Homepage = () => {
         <Link to = "/Shows" className="bg-white text-black font-semibold px-4 py-2 rounded hover:bg-gray-300 transition">
             Browse Shows
         </Link>
-
+        <Link to = "/Favourites" className="bg-white text-black font-semibold px-4 py-2 rounded hover:bg-gray-300 transition">
+            Favourites
+        </Link>
         </div>
     )
 }
