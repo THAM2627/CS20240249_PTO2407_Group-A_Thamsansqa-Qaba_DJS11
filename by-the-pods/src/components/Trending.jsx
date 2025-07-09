@@ -52,4 +52,4 @@ return (
     </div>
 )
 
-e
+export default Trending
