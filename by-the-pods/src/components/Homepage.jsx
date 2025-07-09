@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Trending from "./Trending";
 
 const Homepage = () => {
     return(
@@ -30,6 +31,7 @@ const Homepage = () => {
             Favourites
         </Link>
         </div>
+        <Trending/>
         </div>
     );
 };
