@@ -3,7 +3,9 @@ import { useNowPlaying } from "./NowPlayingGlobal";
 
 
 const Footer = () => {
-    const {episode, isPlaying, setIsPlaying, audioRef, play, pause} = useNowPlaying();
+    const {episode, isPlaying, setIsPlaying, audioRef, play, pause, currentTime, duration, setCurrentTime, setDuration} = useNowPlaying();
+
+    if (!episode) return null;
 
     const togglePlay = () => {
         const audio = audioRef.current;
@@ -17,7 +19,22 @@ const Footer = () => {
         setIsPlaying(!isPlaying);
     };
 
-    if(!episode) return null;
+    const handleTimeUpdate = () => {
+        if (!audioRef.current) return;
+        setCurrentTime(audioRef.current.currentTime);
+    };
+
+    const formatTime = (time) => {
+        if (isNaN(time)) return "00:00";
+        const minutes = Math.floor(time / 60);
+        const seconds = Math.floor(time % 60)
+        .toString()
+        .padStart(2, "0");
+        
+        return `${minutes}:${seconds}`;
+    };
+
+    const progressPercent = duration > 0? Math.min((currentTime / duration) * 100, 100) : 0;
 
     return (
         <footer className="fixed bottom-0 w-full bg-gray-900 text-white px-4 py-3 shadow-lg z-50">
