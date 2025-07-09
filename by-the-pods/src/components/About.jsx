@@ -13,11 +13,12 @@ const About = () => {
             Content is king, distraction are gone. Whether you're into deep conversations, comedy, news, insightful stories, mysetries or anything else in between, we have got you covered.
             </p>
 
-            <h1>OUR MISSION</h1>
-            <h2>To provide a platform for users to listen to their favorite podcasts</h2>
-            <p>
+            <h2 className="text-2xl font-semibold mb-2 text-blue-400">🎯OUR MISSION</h2>
+            <h3 className="text-gray-300 mb-8 leading-relaxed" >To provide a platform for users to listen to their favorite podcasts</h3>
+            <p className="text-gray-300 mb-8 leading-relaxed">
             Our mission is to provide a platform for users to listen to their favorite podcasts. We believe that listening to podcasts is a great way to learn new things and expand your knowledge.
             </p>
+            
         </div>
     );
 }
