@@ -22,5 +22,18 @@ useEffect(() => {
     if(!show) return <p>Loading show...</p>;
 
     return (
-        
-    )
+        <div>
+            <Link to = "/Shows">Back to shows</Link>
+            <h1>{show.title}</h1>
+        <div>
+        {show.seasons.map((seasons) => (
+            <button
+            key={seasons.id}
+            onClick = {() => setSelectedSeason(seasons)}
+            className={seasons.id === selectedSeason?.id ? "font-bold" : "" }
+            >
+            {seasons.title} ({seasons.episodes.length})
+            </button>
+        ))}
+        </div>
+    
