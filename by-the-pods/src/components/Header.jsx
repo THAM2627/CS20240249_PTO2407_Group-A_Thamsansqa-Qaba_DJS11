@@ -17,6 +17,12 @@ const Header = () => {
                 <Link to="/Favourites"
                 className="hover:text-red-500 transition-colors duration-300">Favourites</Link>
             </nav>
+            <input
+            type="text"
+            placeholder="Search shows..."
+            className="text-black px-4 py-1 rounded w-full sm:w-64"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}/>
         </header>
 
     )
