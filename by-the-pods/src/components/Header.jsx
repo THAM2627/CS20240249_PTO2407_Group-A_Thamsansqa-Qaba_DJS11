@@ -1,7 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import { useSearch } from "./SearchContext";
 
 const Header = () => {
+    
+    const {searchQuery, setSearchQuery} = useSearch();
+    
     return (
         
         <header className="bg-gray-900 text-white px-6 py-4 md:px-12 md:py-6 shadow-md sticky top-0 z-50">
