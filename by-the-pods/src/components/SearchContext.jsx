@@ -14,4 +14,4 @@ export const SearchProvider = ({ children }) => {
 
 
 
-export default SearchContext
+export const useSearch = () => useContext(SearchContext);
