@@ -23,7 +23,7 @@ const ShowList = () => {
 useEffect(() => {
     const fetchShows = async () => {
         try {
-        const response = await fetch(`https://podcast-api.netlify.app`);
+        const response = await fetch(`https://podcast-api.netlify.app/id/${id}`);
         const data = await response.json();
         const sorted = data.sort((a, b) => a.title.localeCompare(b.title));
         setShows(sorted);
@@ -38,9 +38,35 @@ useEffect(() => {
 
 const isFavourite = (show) => favourites.some((fav) => fav.id === show.id);
 
+//Filtering
+const filteredShows = shows.filter((show) => {
+    const matchesSearch = show.title.toLowercase().includes(searchQuery.toLowerCase());
+    const matchesGenre = selectedGenre ? show.genreIds.includes(parseInt(selectedGenre)) : true;
+    return matchesSearch && matchesGenre;
+})
+
+
 return (
     <div className="bg-black text-white min-h-screen px-4 py-8">
     <h1 className="text-3xl font-bold mb-6 text-center">🎧All Shows🎧</h1>
+
+{/*Search & filter Controls*/}
+
+<div className="flex flex-col sm:flex-row gap-4 mb-6 justify-between items-center">
+    <input
+    type="text"
+    placeholder="Search Shows"
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+    className="px-4 py-2 rounded-md text-black w-full sm:w-auto"/>
+
+    <select
+    value={selectedGenre}
+    onChange={(e) => setSelectedGenre(e.target.value)}
+    className="px-4 py-2 rounded-md text-black w-full sm:w-auto">
+    <option value="">All Genres</option>
+    
+</div>
 
         {loading ? (
             <div className="flex justify-center items-center h-40">
