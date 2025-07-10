@@ -58,13 +58,25 @@ const Footer = () => {
             </button>
         </div>
 
+        <div className="w-full sm:w-1/2">
+            <div className="h-2 bg-gray-600 rounded cursor-pointer"
+            onClick={handleSeek}>
+            <div className="h-2 bg-blue-500 rounded"
+            style= {{width: `${progressPercent}%`}}/>
+            </div>
+            <div className="flex justify-between text-xs mt-1 text-gray-300">
+            <span>{formatTime(currentTime)}</span>
+            <span>{formatTime(duration)}</span>
+            </div>
+        </div>
+
         <audio 
         ref ={audioRef}
         src={episode.audioUrl}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
         className="hidden"
-        controls/>
+        />
 
         </div>
             </div>
