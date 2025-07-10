@@ -12,15 +12,6 @@ export const NowPlayingProvider = ({ children }) => {
 const playEpisode = (episodeData) => {
     setEpisode(episodeData);
     setIsPlaying(true);
-    setTimeout(() => {
-        if (audioRef.current) {
-            const savedTime = localStorage.getItem(`episode-${episodeData.id}`);
-            setCurrentTime(savedTime ? parseFloat(savedTime) : 0);
-        } else {
-            setCurrentTime(0);
-        }
-        audioRef.current.play();
-    },100);
 };
 
 const pause = () => {
@@ -38,13 +29,33 @@ const play = () => {
 };
 
 useEffect(() => {
-    if (episode) {
-        localStorage.setItem(`episode-${episode.id}`, currentTime);
+    if (episode && audioRef.current) {
+        audioRef.current.src = episode.audioUrl;
+        const savedTime = localStorage.getItem(`episode-${episode.id}`);
+        audioRef.current.currentTime= parseFloat(savedTime);
+        audioRef.current
+        .play()
+        .then(()=> setIsPlaying(true))
+        .catch((error) => {
+            console.error("Error playing audio:", error);
+            setIsPlaying(false);
+        });
     }
-}, [episode, currentTime]);
+}, [episode]);
 
 return (
-    <NowPlayingContext.Provider value={{ episode, playEpisode, pause, play, audioRef, isPlaying, setIsPlaying, currentTime, setCurrentTime, duration, setDuration  }}>
+    <NowPlayingContext.Provider value={{ 
+        episode, 
+        playEpisode, 
+        pause, 
+        play, 
+        audioRef, 
+        isPlaying, 
+        setIsPlaying, 
+        currentTime, 
+        setCurrentTime, 
+        duration, 
+        setDuration  }}>
         {children}
     </NowPlayingContext.Provider>
 );
