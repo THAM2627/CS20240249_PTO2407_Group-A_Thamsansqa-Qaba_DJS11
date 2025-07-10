@@ -18,12 +18,14 @@ const ShowList = () => {
     const[ shows, setShows ] = useState([]);
     const[ loading, setLoading ] = useState(true);
     const {favourites, addFavourite, removeFavourite} = useFavourites();
+    const [ searchQuery, setSearchQuery ] = useState("")
+    const [ selectedGenre, setSelectedGenre ] = useState("");
 
 
 useEffect(() => {
     const fetchShows = async () => {
         try {
-        const response = await fetch(`https://podcast-api.netlify.app/id/${id}`);
+        const response = await fetch("https://podcast-api.netlify.app");
         const data = await response.json();
         const sorted = data.sort((a, b) => a.title.localeCompare(b.title));
         setShows(sorted);
@@ -40,7 +42,7 @@ const isFavourite = (show) => favourites.some((fav) => fav.id === show.id);
 
 //Filtering
 const filteredShows = shows.filter((show) => {
-    const matchesSearch = show.title.toLowercase().includes(searchQuery.toLowerCase());
+    const matchesSearch = show.title.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesGenre = selectedGenre ? show.genreIds.includes(parseInt(selectedGenre)) : true;
     return matchesSearch && matchesGenre;
 })
