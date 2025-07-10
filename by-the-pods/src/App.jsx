@@ -33,7 +33,7 @@ return (
         <Route path="/Favourites" element={<Favourites/>} />
         <Route path="/About" element={<About/>} />
         <Route path="/Shows" element = {<ShowList/>} />
-        <Route path="/Shows/:id" element={<ShowDetail/>} />
+        <Route path="/show/:id" element={<ShowDetail/>} />
       </Routes>
     </main>
     <Footer/>
