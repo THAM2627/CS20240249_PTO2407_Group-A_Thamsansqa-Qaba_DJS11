@@ -65,7 +65,12 @@ return (
     onChange={(e) => setSelectedGenre(e.target.value)}
     className="px-4 py-2 rounded-md text-black w-full sm:w-auto">
     <option value="">All Genres</option>
-    
+    {Object.entries(genreMap).map(([id, name]) => (
+        <option key={id} value={id}>
+            {name}
+        </option>
+    ))}
+    </select>
 </div>
 
         {loading ? (
