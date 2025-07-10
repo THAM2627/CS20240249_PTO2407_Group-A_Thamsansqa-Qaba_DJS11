@@ -21,7 +21,7 @@ const ShowList = () => {
     const[ loading, setLoading ] = useState(true);
     const {favourites, addFavourite, removeFavourite} = useFavourites();
     const { searchQuery, setSearchQuery, selectedGenre, setSelectedGenre } = useSearch();
-    const [ visibleCount, setVisibleCount ] = useState(20);
+    const [ visibleCount, setVisibleCount ] = useState(8);
 
 useEffect(() => {
     const handleScroll = () => {
@@ -117,7 +117,7 @@ return (
         ):(
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
 
-                {filteredShows.map((show) => (
+                {filteredShows.slice(0, visibleCount).map((show) => (
                     <div 
                     key={show.id} className="bg-gray-800 hover:bg-zinc-700 rounded-xl shadow-lg overflow-hidden transition duration-300 transform hover:scale-105
                     cursor-pointer flex flex-col">
@@ -138,7 +138,9 @@ return (
                 {new Date(show.updated).toLocaleDateString()}
                 </p>              
                 </div>
+                
                 </Link>
+               
                 
               
             
@@ -160,8 +162,14 @@ return (
                 ))}
             </div>
         )}
+             {visibleCount < filteredShows.length ? (
+        <div className="text-center mt-4 text-gray-400">Loading more shows...</div>
+    ):(
+        <div className="text-center mt-4 text-gray-400">No more shows to load</div>
+    )}
 
     </div>
+
 )
 }
 
