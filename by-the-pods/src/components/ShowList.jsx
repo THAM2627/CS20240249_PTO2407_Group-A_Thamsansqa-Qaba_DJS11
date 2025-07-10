@@ -46,6 +46,18 @@ const filteredShows = shows.filter((show) => {
     const matchesGenre = selectedGenre ? show.genreIds.includes(parseInt(selectedGenre)) : true;
     return matchesSearch && matchesGenre;
 })
+.sort((a, b) => {
+    if (sortOption === "title-asc") {
+        return a.title.localeCompare(b.title);
+    } else if (sortOption === "title-desc") {
+        return b.title.localeCompare(a.title);
+    } else if (sortOption === "updated-newest") {
+        return new Date(b.updated) - new Date(a.updated);
+    } else if (sortOption === "updated-oldest") {
+        return new Date(a.updated) - new Date(b.updated);
+    }
+    return 0;
+})
 
 
 return (
