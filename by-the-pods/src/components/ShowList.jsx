@@ -82,7 +82,7 @@ return (
         ):(
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
 
-                {shows.map((show) => (
+                {filteredShows.map((show) => (
                     <div 
                     key={show.id} className="bg-gray-800 hover:bg-zinc-700 rounded-xl shadow-lg overflow-hidden transition duration-300 transform hover:scale-105
                     cursor-pointer flex flex-col">
