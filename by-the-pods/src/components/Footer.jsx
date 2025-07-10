@@ -35,6 +35,11 @@ const Footer = () => {
         setCurrentTime(newTime);
     };
 
+    const handleLoadedMetadata = () => {
+        if (!audioRef.current) return;
+        setDuration(audioRef.current.duration);
+    }
+
     const formatTime = (time) => {
         if (isNaN(time)) return "00:00";
         const minutes = Math.floor(time / 60);
