@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {useFavourites} from "./FavouritesFunction";
-import { Link } from "react-router-dom";
-import { useSearchFilter } from "./SearchContext";
+import { Link, useSubmit } from "react-router-dom";
+import { useSearch } from "./SearchContext";
 
 const genreMap = {
     1: "Personal Growth",
@@ -17,9 +17,10 @@ const genreMap = {
 
 const ShowList = () => {
     const[ shows, setShows ] = useState([]);
+    const [ sortOption, setSortOption ] = useState("title-asc")
     const[ loading, setLoading ] = useState(true);
     const {favourites, addFavourite, removeFavourite} = useFavourites();
-    const { searchQuery, setSearchQuery, selectedGenre, setSelectedGenre } = useSearchFilter();
+    const { searchQuery, setSearchQuery, selectedGenre, setSelectedGenre } = useSearch();
 
 useEffect(() => {
     const fetchShows = async () => {
@@ -65,6 +66,10 @@ return (
     value={selectedGenre}
     onChange={(e) => setSelectedGenre(e.target.value)}
     className="px-4 py-2 rounded-md text-black w-full sm:w-auto">
+    <option value="title-asc">Title A → Z</option>
+    <option value="title-desc">Title Z → A </option>
+    <option value="updated-newest">Updated:Newest</option>
+    <option value="updated-oldest">Updated:Oldest</option>
     <option value="">All Genres</option>
     {Object.entries(genreMap).map(([id, name]) => (
         <option key={id} value={id}>
