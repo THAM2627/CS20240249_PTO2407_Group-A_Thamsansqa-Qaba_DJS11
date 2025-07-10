@@ -21,8 +21,18 @@ const ShowList = () => {
     const[ loading, setLoading ] = useState(true);
     const {favourites, addFavourite, removeFavourite} = useFavourites();
     const { searchQuery, setSearchQuery, selectedGenre, setSelectedGenre } = useSearch();
+    const [ visibleCount, setVisibleCount ] = useState(20);
 
 useEffect(() => {
+    const handleScroll = () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 300) {
+            setVisibleCount((prev) => prev + 20);    
+        };
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+        window.removeEventListener("scroll", handleScroll);
+    }, [];
     const fetchShows = async () => {
         try {
         const response = await fetch("https://podcast-api.netlify.app");
