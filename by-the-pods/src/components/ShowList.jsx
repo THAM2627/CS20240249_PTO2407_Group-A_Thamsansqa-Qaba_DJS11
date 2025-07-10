@@ -29,10 +29,6 @@ useEffect(() => {
             setVisibleCount((prev) => prev + 20);    
         };
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-        window.removeEventListener("scroll", handleScroll);
-    }, [];
     const fetchShows = async () => {
         try {
         const response = await fetch("https://podcast-api.netlify.app");
@@ -43,9 +39,14 @@ useEffect(() => {
     } catch (error) {
         console.error("Failed to fetch shows:", error);
     }
-    
     };
     fetchShows();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+        window.removeEventListener("scroll", handleScroll);
+    }
+
 }, []);
 
 const isFavourite = (show) => favourites.some((fav) => fav.id === show.id);
