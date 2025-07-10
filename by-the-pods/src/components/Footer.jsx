@@ -24,6 +24,17 @@ const Footer = () => {
         setCurrentTime(audioRef.current.currentTime);
     };
 
+    const handleSeek = (episode)  => {
+        if (!audioRef.current) return;
+        const progressBar = episode.currentTarget;
+        const rect = progressBar.getBoundingClientRect();
+        const clickX = episode.clientX - rect.left;
+        const newTime = (clickX / rect.width) * audioRef.current.duration;
+
+        audioRef.current.currentTime = newTime;
+        setCurrentTime(newTime);
+    };
+
     const formatTime = (time) => {
         if (isNaN(time)) return "00:00";
         const minutes = Math.floor(time / 60);
