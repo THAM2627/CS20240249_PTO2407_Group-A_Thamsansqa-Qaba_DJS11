@@ -3,7 +3,17 @@ import { useNowPlaying } from "./NowPlayingGlobal";
 
 
 const Footer = () => {
-    const {episode, isPlaying, setIsPlaying, audioRef, play, pause, currentTime, duration, setCurrentTime, setDuration} = useNowPlaying();
+    const 
+    {episode, 
+    isPlaying, 
+    setIsPlaying, 
+    audioRef, 
+    play, 
+    pause, 
+    currentTime, 
+    duration, 
+    setCurrentTime, 
+    setDuration} = useNowPlaying();
 
     if (!episode) return null;
 
