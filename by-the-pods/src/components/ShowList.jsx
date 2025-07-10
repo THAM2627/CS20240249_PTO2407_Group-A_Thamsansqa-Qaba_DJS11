@@ -67,6 +67,7 @@ return (
 {/*Search & filter Controls*/}
 
 <div className="flex flex-col sm:flex-row gap-4 mb-6 justify-between items-center">
+    {/*Search*/}
     <input
     type="text"
     placeholder="Search Shows"
@@ -74,20 +75,27 @@ return (
     onChange={(e) => setSearchQuery(e.target.value)}
     className="px-4 py-2 rounded-md text-black w-full sm:w-auto"/>
 
+    {/*Filter by Genre*/}
     <select
     value={selectedGenre}
     onChange={(e) => setSelectedGenre(e.target.value)}
     className="px-4 py-2 rounded-md text-black w-full sm:w-auto">
-    <option value="title-asc">Title A → Z</option>
-    <option value="title-desc">Title Z → A </option>
-    <option value="updated-newest">Updated:Newest</option>
-    <option value="updated-oldest">Updated:Oldest</option>
     <option value="">All Genres</option>
     {Object.entries(genreMap).map(([id, name]) => (
         <option key={id} value={id}>
             {name}
         </option>
     ))}
+    </select>
+
+    <select 
+    value={sortOption}
+    onChange={(e) => setSortOption(e.target.value)}
+    className="px-4 py-2 rounded-md text-white w-full sm:w-auto">
+<option value="title-asc">Title A → Z</option>
+    <option value="title-desc">Title Z → A </option>
+    <option value="updated-newest">Updated:Newest</option>
+    <option value="updated-oldest">Updated:Oldest</option>
     </select>
 </div>
 
