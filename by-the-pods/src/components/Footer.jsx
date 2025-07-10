@@ -57,6 +57,7 @@ const Footer = () => {
             {isPlaying ? "Pause" : "Play"}
             </button>
         </div>
+
         <audio 
         ref ={audioRef}
         src={episode.audioUrl}
