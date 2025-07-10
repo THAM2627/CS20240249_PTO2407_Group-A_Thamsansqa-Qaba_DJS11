@@ -27,10 +27,18 @@ useEffect(() => {
     if(!show) return <p>Loading show...</p>;
 
     return (
-        <div>
-            <Link to = "/Shows">Back to shows</Link>
-            <h1>{show.title}</h1>
-        <div>
+        <div className="bg-black text-white min-h-screen px-4 py-8">
+            <Link 
+            to = "/"
+            className="text-blue-400 hover:underline mb-6 inline-block">Back to shows</Link>
+
+        <div className="text-center mb-6">
+        <h1 className="text-3xl font-bold mb-2">{show.title}</h1>
+        <img src={show.image}
+        alt={show.title}
+        className="w-60 mx-auto roudned-lg mb-4"/>
+        <p className="text-gray-300 max-w-2xl mx-auto">{show.description}</p>
+        
         {show.seasons.map((seasons) => (
             <button
             key={seasons.id}
@@ -41,7 +49,7 @@ useEffect(() => {
             </button>
         ))}
         </div>
-    <ul>
+    <ul className="space-y-6 max-w-3xl mx-auto">
         {selectedSeason?.episodes.map((episode) => (
         <li key={episode.id}>
             {episode.title}
