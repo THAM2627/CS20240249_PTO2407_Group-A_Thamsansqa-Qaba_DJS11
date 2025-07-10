@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {useFavourites} from "./FavouritesFunction";
 import { Link } from "react-router-dom";
+import { useSearchFilter } from "./SearchContext";
 
 const genreMap = {
     1: "Personal Growth",
@@ -18,9 +19,7 @@ const ShowList = () => {
     const[ shows, setShows ] = useState([]);
     const[ loading, setLoading ] = useState(true);
     const {favourites, addFavourite, removeFavourite} = useFavourites();
-    const [ searchQuery, setSearchQuery ] = useState("")
-    const [ selectedGenre, setSelectedGenre ] = useState("");
-
+    const { searchQuery, setSearchQuery, selectedGenre, setSelectedGenre } = useSearchFilter();
 
 useEffect(() => {
     const fetchShows = async () => {
