@@ -10,6 +10,7 @@ import Homepage from './components/Homepage';
 import ShowDetail from './components/ShowDetail';
 import { FavouritesProvider } from './components/FavouritesFunction';
 import { NowPlayingProvider } from './components/NowPlayingGlobal';
+import { SearchProvider } from './components/SearchContext';
 
 
 const App = () => {
@@ -23,6 +24,7 @@ return (
   <BrowserRouter>
   <NowPlayingProvider>
   <FavouritesProvider>
+    <SearchProvider>
   <div className='min-h-screen flex flex-col bg-black text-white font-sans'>
     <Header/>
     <main className='flex-grow px-4 sm:px-6 lg:px-8 py-6'>
@@ -36,6 +38,7 @@ return (
     </main>
     <Footer/>
   </div>
+  </SearchProvider>
   </FavouritesProvider>
   </NowPlayingProvider>
   </BrowserRouter>
