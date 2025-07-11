@@ -36,7 +36,11 @@ useEffect(() => {
     fetchTrending();
 }, []);
 
-if (loading) { return <p>Loading...</p>; }
+if (loading) { return (
+ <div className="flex justify-center items-center mt-12"> 
+ <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white"></div></div> ) 
+ }
+ 
 return (
     <div className="mt-12">
         <h2 className="text-3xl font-bold mb-4">Trending Podcasts</h2>
