@@ -30,7 +30,7 @@ useEffect(() => {
     if(!show) return <p>Loading show...</p>;
 
     const isEpisodeFavourited = (episodeID) =>
-    favourites.some((fav) => fav.id === episodeID);
+    favourites.some((fav) => fav.episodeID === episodeID && fav.showID === show.id);
 
     return (
         <div className="bg-black text-white min-h-screen px-4 py-8">
@@ -84,9 +84,7 @@ useEffect(() => {
               isEpisodeFavourited(episode.id)
                 ? removeFavourite(episode.id)
                 : addFavourite({
-                    ...episode,
-                    showTitle: show.title,
-                    image: episode.image || show.image,
+        
                   })
             }
             className={`px-3 py-1 text-sm rounded ${
