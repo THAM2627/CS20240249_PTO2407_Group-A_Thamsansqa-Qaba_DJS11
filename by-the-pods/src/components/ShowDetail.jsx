@@ -82,7 +82,7 @@ useEffect(() => {
           <button
             onClick={() =>
               isEpisodeFavourited(episode.id)
-                ? removeFavourite(episode.id)
+                ? removeFavourite(episode.id, show.id)
                 : addFavourite({
                     episodeID: episode.id,
                     showID: show.id,

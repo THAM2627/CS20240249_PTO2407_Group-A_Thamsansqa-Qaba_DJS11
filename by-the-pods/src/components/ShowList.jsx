@@ -49,7 +49,6 @@ useEffect(() => {
 
 }, []);
 
-const isFavourite = (show) => favourites.some((fav) => fav.id === show.id);
 
 //Filtering
 const filteredShows = shows.filter((show) => {
@@ -141,23 +140,6 @@ return (
                 
                 </Link>
                
-                
-              
-            
-
-                {/*Favourite Button */}
-                <button
-                onClick = {() => 
-                    isFavourite(show)? removeFavourite(show.id): addFavourite(show)
-                }
-                className = {`mt-2 text-sm px-2 py-1 rounded-md ${
-                    isFavourite(show) ? "bg-red-600 hover:bg-red-700" : "bg-gray-600 hover:bg-gray-700" 
-                }transition`}>
-
-                {isFavourite(show) ? "💔Remove Favourite" : "❤️Add Favourite"}
-
-                </button>
-            
                 </div>
                 ))}
             </div>

@@ -25,14 +25,20 @@ const addFavourite = (episode) => {
   };
 
 const removeFavourite = (episodeID, showID) => {
-    setFavourites((prev) => prev.filter((f) => !(f.episodeid === episodeID && f.showID === showID)));
+    setFavourites((prev) => prev.filter((f) => !(f.episodeID === episodeID && f.showID === showID)));
+
+    
 };
 
 const isEpisodeFavourited = (episodeID, showID) =>
 favourites.some((fav) => fav.episodeID === episodeID && fav.showID === showID);
 
 return (
-    <FavouritesContext.Provider value={{ favourites, addFavourite, removeFavourite }}>
+    <FavouritesContext.Provider value={{
+    favourites, 
+    addFavourite, 
+    removeFavourite,
+    isEpisodeFavourited }}>
         {children}
     </FavouritesContext.Provider>
 );
