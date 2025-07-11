@@ -3,10 +3,23 @@ import {useFavourites} from "./FavouritesFunction";
 
 const FavouritesList = () => {
     const {favourites, removeFavourite} = useFavourites();
+    const [ sortOrder, setSortOrder ] = React.useState("asc");
+    const sortedFavourites = [...favourites].sort((a, b) => {
+        if(sortOrder === "asc") {
+            return a.title.localeCompare(b.title);
+        } else {
+            return b.title.localeCompare(a.title);
+        }
+        return 0;
+    })
 
     return (
         <div className="bg-black text-white min-h-screen px-4 py-8">
             <h1 className="text-3xl font-bold mb-6 text-center">❤️Your Favourites❤️</h1>
+
+        {/*Sort Button */}
+        
+
             {favourites.map((podcast) => (
                <div 
                key={podcast.id}
