@@ -92,7 +92,7 @@ const value = { episode, isPlaying, currentTime, duration, playEpisode, play, pa
 
 
 return (
-    <NowPlayingContext.Provider value={{ value }}>
+    <NowPlayingContext.Provider value={value}>
         {children}
         <audio ref = {audioRef} className="hidden"/>
     </NowPlayingContext.Provider>
