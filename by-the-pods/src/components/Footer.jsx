@@ -74,15 +74,6 @@ const Footer = () => {
             <span>{formatTime(duration)}</span>
             </div>
         </div>
-
-        <audio 
-        ref ={audioRef}
-        src={episode.audioUrl}
-        onTimeUpdate={handleTimeUpdate}
-        onLoadedMetadata={handleLoadedMetadata}
-        className="hidden"
-        />
-
         </div>
             </div>
         
