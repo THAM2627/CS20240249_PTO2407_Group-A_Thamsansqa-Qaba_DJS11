@@ -49,10 +49,10 @@ const FavouritesList = () => {
                 <div className="p-4 flex flex-col gap-2 flex-grow"> 
                 <h4 className="text-sm md:text-base font-bold truncate">{podcast.title}</h4>
                 <p className="text-xs text-white">
-                    Seasons: {podcast.seasons}
+                    Seasons: {podcast.showTitle}
                 </p>
                 <button 
-                onClick={() => removeFavourite(podcast.id)}
+                onClick={() => removeFavourite(podcast.episodeID, podcast.showID)}
                 className="mt-auto bg-red-600 text-white text-xs px-2 py-1 rounded hover:bg-red-400 transition">
                     Remove
                 </button>
