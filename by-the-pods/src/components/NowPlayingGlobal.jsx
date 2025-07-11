@@ -12,35 +12,29 @@ export const NowPlayingProvider = ({ children }) => {
 // Function to play an episode
 const playEpisode = (episodeData) => {
     setEpisode(episodeData);
-    setIsPlaying(true);
 };
 
 // Function to pause the audio
 const pause = () => {
-    if (audioRef.current) {
-        audioRef.current.pause();
-    }
-    setIsPlaying(false);
+    audioRef.current.pause();
 };
 
 // Function to play the audio
 const play = () => {
-    if (audioRef.current) {
-        audioRef.current.play();
-    }
-    setIsPlaying(true);
+    audioRef.current.play();
 };
 
 // Function to handle audio time updates
 useEffect(() => {
     if (episode && audioRef.current) {
         audioRef.current.src = episode.audioUrl;
-        const savedTime = localStorage.getItem(`episode-${episode.id}`);
-        audioRef.current.currentTime= parseFloat(savedTime);
-        audioRef.current
-        .play()
-        .then(()=> setIsPlaying(true))
-        .catch((error) => {
+        const savedTime = localStorage.getItem(`episode-${episode.episodeID}`);
+        if (savedTime) {
+        audioRef.current.currentTime = parseFloat(savedTime);
+        } else {
+        audioRef.current.currentTime = 0;
+        }
+        audioRef.current.play().catch((error) => {
             console.error("Error playing audio:", error);
             setIsPlaying(false);
         });
