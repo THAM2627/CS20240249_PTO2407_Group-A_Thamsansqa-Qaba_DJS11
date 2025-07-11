@@ -18,31 +18,12 @@ const Footer = () => {
     if (!episode) return null;
 
     const togglePlay = () => {
-        
-        if (!audioRef.current) return;
-
-        if (isPlaying) {
-            pause();
-        } else {
-            play();
-        }
-        setIsPlaying(!isPlaying);
-    };
-
-    const handleTimeUpdate = () => {
-        if (!audioRef.current) return;
-        setCurrentTime(audioRef.current.currentTime);
+        isPlaying ? pause() : play();
     };
 
     const handleSeek = (e)  => {
-        if (!audioRef.current) return;
-        const progressBar = e.currentTarget;
-        const rect = progressBar.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const newTime = (clickX / rect.width) * audioRef.current.duration;
-
-        audioRef.current.currentTime = newTime;
-        setCurrentTime(newTime);
+        const progressBar = e.currentTarget
+        
     };
 
     const handleLoadedMetadata = () => {
