@@ -9,11 +9,13 @@ export const NowPlayingProvider = ({ children }) => {
     const [ duration, setDuration ] = useState(0);
     const audioRef = useRef(null);
 
+// Function to play an episode
 const playEpisode = (episodeData) => {
     setEpisode(episodeData);
     setIsPlaying(true);
 };
 
+// Function to pause the audio
 const pause = () => {
     if (audioRef.current) {
         audioRef.current.pause();
@@ -21,6 +23,7 @@ const pause = () => {
     setIsPlaying(false);
 };
 
+// Function to play the audio
 const play = () => {
     if (audioRef.current) {
         audioRef.current.play();
@@ -28,6 +31,7 @@ const play = () => {
     setIsPlaying(true);
 };
 
+// Function to handle audio time updates
 useEffect(() => {
     if (episode && audioRef.current) {
         audioRef.current.src = episode.audioUrl;
@@ -42,6 +46,7 @@ useEffect(() => {
         });
     }
 }, [episode]);
+
 
 return (
     <NowPlayingContext.Provider value={{ 
