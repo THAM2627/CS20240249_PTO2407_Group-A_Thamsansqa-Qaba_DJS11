@@ -13,16 +13,19 @@ useEffect(() => {
     localStorage.setItem("favourites", JSON.stringify(favourites));
 }, [favourites]);
 
-const addFavourite = (podcast) => {
+const addFavourite = (episode) => {
     setFavourites((prev) => 
     { if (prev.find((item) => item.id === podcast.id)) return prev;
     return [...prev,{...podcast, dateAdded: Date.now()}];
 });
 };
 
-const removeFavourite = (id) => {
-    setFavourites((prev) => prev.filter((f) => f.id !== id));
+const removeFavourite = (episodeID, showID) => {
+    setFavourites((prev) => prev.filter((f) => !(f.episodeid === episodeID && f.showID === showID)));
 };
+
+const isEpisodeFavourited = (episodeID, showID) =>
+favourites.some((fav) => fav.episodeID === episodeID && fav.showID === showID);
 
 return (
     <FavouritesContext.Provider value={{ favourites, addFavourite, removeFavourite }}>
