@@ -61,7 +61,7 @@ useEffect(() => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
           <p className="font-semibold">{episode.title}</p>
-          <p className="text-sm text-gray-400 truncate">{episode.description}</p>
+          <p className="text-sm text-gray-400 break-words whitespace-normal">{episode.description}</p>
         </div>
 
         <div className="flex gap-2 mt-2 sm:mt-0">
