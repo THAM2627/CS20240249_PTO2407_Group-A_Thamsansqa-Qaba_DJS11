@@ -12,6 +12,7 @@ export const NowPlayingProvider = ({ children }) => {
 // Function to play an episode
 const playEpisode = (episodeData) => {
     setEpisode(episodeData);
+    console.log("Playing episode:", episodeData);
 };
 
 // Function to pause the audio
