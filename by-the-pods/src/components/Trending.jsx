@@ -15,6 +15,7 @@ const genreMap = {
 
 const Trending = () => {
     const [trending, setTrending] = useState([]);
+    const [loading, setLoading] = useState(true);
 
 
 useEffect(() => {
@@ -27,12 +28,15 @@ useEffect(() => {
         setTrending(sorted);
     } catch (err) {
         console.error("Error fetching trending",err);
+    } finally {
+        setLoading(false);
+    }
     };
-}
 
     fetchTrending();
 }, []);
 
+if (loading) { return <p>Loading...</p>; }
 return (
     <div className="mt-12">
         <h2 className="text-3xl font-bold mb-4">Trending Podcasts</h2>
