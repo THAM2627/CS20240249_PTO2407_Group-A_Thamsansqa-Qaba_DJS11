@@ -1,18 +1,20 @@
 import React, {useEffect, useState} from "react";
 import { useParams, Link } from "react-router-dom";
 import { useNowPlaying } from "./NowPlayingGlobal";
+import { useFavourites } from "./FavouritesFunction";
 
 const ShowDetail = () => {
     const {id} = useParams();
     const { playEpisode } = useNowPlaying();
     const [ show, setShow ] = useState(null);
     const [selectedSeason, setSelectedSeason ] = useState(null);
+    const { favourites, addFavourite, removeFavourite } = useFavourites();
 
 
 useEffect(() => {
     ( async () => {
     try {
-            const response = await fetch("https://podcast-api.netlify.app/genre/<ID>");
+            const response = await fetch("https://podcast-api.netlify.app/genre/id/<ID>");
             const data = await response.json();
             setShow(data);
             setSelectedSeason(data.seasons[0]);
@@ -25,6 +27,9 @@ useEffect(() => {
         
         
     if(!show) return <p>Loading show...</p>;
+
+    const isEpisodeFavourited = (episodeID) =>
+    favourites.some((fav) => fav.id === episodeID);
 
     return (
         <div className="bg-black text-white min-h-screen px-4 py-8">
@@ -49,20 +54,53 @@ useEffect(() => {
             </button>
         ))}
         </div>
-    <ul className="space-y-6 max-w-3xl mx-auto">
-        {selectedSeason?.episodes.map((episode) => (
-        <li key={episode.id}>
-            {episode.title}
-            <button onClick={() => playEpisode ({
-            title: episode.title,
-            image: episode.image,
-            audioUrl: episode.audio,
-            show: show.title,})}>
-            Play
-            </button>
-            </li>
-        ))}
-    </ul>
+        <ul className="space-y-6 max-w-3xl mx-auto">
+  {selectedSeason?.episodes.map((episode) => (
+    <li key={episode.id} className="bg-gray-800 p-4 rounded-lg shadow">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <p className="font-semibold">{episode.title}</p>
+          <p className="text-sm text-gray-400 truncate">{episode.description}</p>
+        </div>
+
+        <div className="flex gap-2 mt-2 sm:mt-0">
+          <button
+            onClick={() =>
+              playEpisode({
+                title: episode.title,
+                image: episode.image || show.image,
+                audioUrl: episode.audio,
+                show: show.title,
+              })
+            }
+            className="px-3 py-1 bg-green-600 rounded hover:bg-green-500 text-sm"
+          >
+            ▶️ Play
+          </button>
+
+          <button
+            onClick={() =>
+              isEpisodeFavourited(episode.id)
+                ? removeFavourite(episode.id)
+                : addFavourite({
+                    ...episode,
+                    showTitle: show.title,
+                    image: episode.image || show.image,
+                  })
+            }
+            className={`px-3 py-1 text-sm rounded ${
+              isEpisodeFavourited(episode.id)
+                ? "bg-red-600 hover:bg-red-700"
+                : "bg-gray-600 hover:bg-gray-700"
+            }`}
+          >
+            {isEpisodeFavourited(episode.id) ? "💔 Remove" : "❤️ Favourite"}
+          </button>
+        </div>
+      </div>
+    </li>
+  ))}
+</ul>
         </div>
     );
             };
