@@ -18,7 +18,12 @@ const FavouritesList = () => {
             <h1 className="text-3xl font-bold mb-6 text-center">❤️Your Favourites❤️</h1>
 
         {/*Sort Button */}
-        
+        <div className="mb-4 flex justify-center gap-4">
+            <label className="flex items-center"> Sort by Title: </label> 
+            <select
+            id="SortOrder"
+                
+        </div>
 
             {favourites.map((podcast) => (
                <div 
