@@ -8,7 +8,7 @@ const ShowDetail = () => {
     const { playEpisode } = useNowPlaying();
     const [ show, setShow ] = useState(null);
     const [selectedSeason, setSelectedSeason ] = useState(null);
-    const { favourites, addFavourite, removeFavourite } = useFavourites();
+    const { favourites, addFavourite, removeFavourite, } = useFavourites();
 
 
 useEffect(() => {
@@ -29,8 +29,12 @@ useEffect(() => {
         
     if(!show) return <p>Loading show...</p>;
 
-    const isEpisodeFavourited = (episodeID) =>
-    favourites.some((fav) => fav.episodeID === episodeID && fav.showID === show.id);
+    const isEpisodeFavourited = (episodeID, showID) =>
+    favourites.some((fav) => fav.episodeID === episodeID && fav.showID === showID);
+  
+
+
+
 
     return (
         <div className="bg-black text-white min-h-screen px-4 py-8">
@@ -81,7 +85,7 @@ useEffect(() => {
 
           <button
             onClick={() =>
-              isEpisodeFavourited(episode.id)
+              isEpisodeFavourited(episode.id, show.id)
                 ? removeFavourite(episode.id, show.id)
                 : addFavourite({
                     episodeID: episode.id,
@@ -92,12 +96,12 @@ useEffect(() => {
                   })
             }
             className={`px-3 py-1 text-sm rounded ${
-              isEpisodeFavourited(episode.id)
+              isEpisodeFavourited(episode.id, show.id)
                 ? "bg-red-600 hover:bg-red-700"
                 : "bg-gray-600 hover:bg-gray-700"
             }`}
           >
-            {isEpisodeFavourited(episode.id) ? "💔 Remove" : "❤️ Favourite"}
+            {isEpisodeFavourited(episode.id, show.id) ? "💔 Remove" : "❤️ Favourite"}
           </button>
         </div>
       </div>
