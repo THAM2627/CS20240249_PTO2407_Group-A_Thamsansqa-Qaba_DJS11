@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { useNowPlaying } from "./NowPlayingGlobal";
 
 
@@ -6,14 +6,13 @@ const Footer = () => {
     const 
     {episode, 
     isPlaying, 
-    setIsPlaying, 
     audioRef, 
     play, 
     pause, 
     currentTime, 
-    duration, 
-    setCurrentTime, 
-    setDuration} = useNowPlaying();
+    duration,
+    seek, 
+} = useNowPlaying();
 
     if (!episode) return null;
 
@@ -22,14 +21,12 @@ const Footer = () => {
     };
 
     const handleSeek = (e)  => {
-        const progressBar = e.currentTarget
-        
+        const progressBar = e.currentTarget;
+        const rect = progressBar.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const newTime = (clickX / rect.width) * duration;
+        seek(newTime);
     };
-
-    const handleLoadedMetadata = () => {
-        if (!audioRef.current) return;
-        setDuration(audioRef.current.duration);
-    }
 
     const formatTime = (time) => {
         if (isNaN(time)) return "00:00";
@@ -41,12 +38,12 @@ const Footer = () => {
         return `${minutes}:${seconds}`;
     };
 
-    const progressPercent = duration > 0? Math.min((currentTime / duration) * 100, 100) : 0;
+    const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
 
     return (
         <footer className="fixed bottom-0 w-full bg-gray-900 text-white px-4 py-3 shadow-lg z-50">
         <div  className="flex flex-col sm:flex-row items-center justify-between">
-            {/* Audio Player - Now Playing */}
+        {/* Audio Player - Now Playing */}
         <div className="flex items-center gap-4 mb-2 sm:mb:0">
         <img 
         src = {episode.image}
@@ -57,6 +54,7 @@ const Footer = () => {
         <p className="text-sm font-semibold truncate max-w-[150px]">{episode.title}</p>
         <p className="text-xs text-gray-400 truncate max-w-[150px]">{episode.show || "Unknown Show"}</p> 
         </div>
+
         <div className="flex items-center gap-4">
             <button
             onClick={togglePlay}
