@@ -41,6 +41,49 @@ useEffect(() => {
     }
 }, [episode]);
 
+//Adding Event Listeners to the audio
+
+useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handlePlay = () => {
+        setIsPlaying(true);
+    };
+    const handlePause = () => {
+        setIsPlaying(false);
+    }
+    const handleTimeUpdate = () => {
+        setCurrentTime(audio.currentTime);
+        if(episode) {
+            localStorage.setItem(`episode-${episode.episodeID}`, audio.currentTime);
+        }
+    };
+    const handleLoadedMetadata = () => {
+        if (!isNaN(audio.duration)) {
+            setDuration(audio.duration);
+        }
+    };
+
+    audio.addEventListener("play", handlePlay);
+    audio.addEventListener("pause", handlePause);
+    audio.addEventListener("ended", handlePause); // Also treat end of track as paused
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+    audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+
+    // Cleanup listeners on component unmount
+    return () => {
+        audio.removeEventListener("play", handlePlay);
+        audio.removeEventListener("pause", handlePause);
+        audio.removeEventListener("ended", handlePause);
+        audio.removeEventListener("timeupdate", handleTimeUpdate);
+        audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+    };
+}, [episode]); // Rerun if episode changes to handle localStorage key
+
+const value = { episode, isPlaying, currentTime, duration, playEpisode, play, pause, seek };
+
+
 
 return (
     <NowPlayingContext.Provider value={{ 
