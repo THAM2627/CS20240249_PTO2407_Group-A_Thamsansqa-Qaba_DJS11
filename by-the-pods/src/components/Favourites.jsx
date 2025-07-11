@@ -5,13 +5,18 @@ const FavouritesList = () => {
     const {favourites, removeFavourite} = useFavourites();
     const [ sortOrder, setSortOrder ] = React.useState("asc");
     const sortedFavourites = [...favourites].sort((a, b) => {
-        if(sortOrder === "asc") {
-            return a.title.localeCompare(b.title);
-        } else {
-            return b.title.localeCompare(a.title);
-        }
-        return 0;
-    })
+        switch (sortOrder) {
+            case "title-asc":
+                return a.title.localeCompare(b.title);
+            case "title-desc":
+                return b.title.localeCompare(a.title);
+            case "date-newest":
+                return (b.dateAdded || 0) - (a.dateAdded || 0);
+            case "date-oldest":
+                return (a.dateAdded || 0) - (b.dateAdded || 0);
+            default:
+                return 0;
+    }})
 
     return (
         <div className="bg-black text-white min-h-screen px-4 py-8">
@@ -19,13 +24,21 @@ const FavouritesList = () => {
 
         {/*Sort Button */}
         <div className="mb-4 flex justify-center gap-4">
-            <label className="flex items-center"> Sort by Title: </label> 
+            <label htmlFor="SortOrder" className="flex items-center"> Sort by Title: </label> 
             <select
             id="SortOrder"
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value)}
+            className="text-white px-4 py-1 rounded w-full">
+            <option value="title-asc">Title:A➞Z</option>
+            <option value="title-desc">Title:Z➞A</option>
+            <option value="date-newest">Date:Newest</option>
+            <option value="date-oldest">Date:Oldest</option>
+            </select>
                 
         </div>
 
-            {favourites.map((podcast) => (
+            {sortedFavourites.map((podcast) => (
                <div 
                key={podcast.id}
                className="bg-gray-800 hover:bg-zinc-700 rounded-xl shadow-md overflow-hidden transition duration-300 transform hover:scale-105 cursor-pointer flex flex-col">
