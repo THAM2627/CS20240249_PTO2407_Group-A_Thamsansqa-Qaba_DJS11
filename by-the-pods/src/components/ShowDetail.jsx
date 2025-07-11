@@ -84,6 +84,10 @@ useEffect(() => {
               isEpisodeFavourited(episode.id)
                 ? removeFavourite(episode.id)
                 : addFavourite({
+                    episodeID: episode.id,
+                    showID: show.id,
+                    title: episode.title,
+                    image: episode.image || show.image,
         
                   })
             }
