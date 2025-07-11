@@ -24,6 +24,12 @@ const play = () => {
     audioRef.current.play();
 };
 
+const seek = (time) => {
+    if (audioRef.current) {
+        audioRef.current.currentTime = time;
+    }
+}
+
 // Function to handle audio time updates
 useEffect(() => {
     if (episode && audioRef.current) {
