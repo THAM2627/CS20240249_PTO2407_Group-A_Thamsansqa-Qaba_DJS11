@@ -16,7 +16,7 @@ useEffect(() => {
 const addFavourite = (podcast) => {
     setFavourites((prev) => 
     { if (prev.find((item) => item.id === podcast.id)) return prev;
-    return [...prev, podcast];
+    return [...prev,{...podcast, dateAdded: Date.now()}];
 });
 };
 
