@@ -14,11 +14,15 @@ useEffect(() => {
 }, [favourites]);
 
 const addFavourite = (episode) => {
-    setFavourites((prev) => 
-    { if (prev.find((item) => item.id === podcast.id)) return prev;
-    return [...prev,{...podcast, dateAdded: Date.now()}];
-});
-};
+    setFavourites((prev) => {
+      const exists = prev.find(
+        (item) =>
+          item.episodeID === episode.episodeID && item.showID === episode.showID
+      );
+      if (exists) return prev;
+      return [...prev, { ...episode, dateAdded: Date.now() }];
+    });
+  };
 
 const removeFavourite = (episodeID, showID) => {
     setFavourites((prev) => prev.filter((f) => !(f.episodeid === episodeID && f.showID === showID)));
